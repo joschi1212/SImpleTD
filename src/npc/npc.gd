@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name NPC extends CharacterBody3D
 
 var speed = 2
 var accel = 10
@@ -11,10 +11,18 @@ const mode = MODE_SMOOTH
 
 
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
-@onready var state = get_node("Character/CharacterState")
+@onready var state : CharacterState = get_node("Character/CharacterState")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+func _input(event):
+	if event is InputEventMouseButton and event.pressed:
+		event = event as InputEventMouseButton
+		if event.button_index == MOUSE_BUTTON_RIGHT:
+			state.current_state = state.ATTACKING
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			state.current_state = state.MOVING
 
 
 func _physics_process(delta):

@@ -1,4 +1,4 @@
-extends Node3D
+class_name CharacterState extends Node3D
 
 const MOVING = 0
 const ATTACKING = 1
@@ -7,13 +7,18 @@ const DYING = 3
 
 @onready var current_state = 0
 
-# Called when the node enters the scene tree for the first time.
+signal state_changed(NPC : CharacterBody3D, new_state : int)
+
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func get_current_state():
 	return current_state
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func set_current_state(new_state):
+	current_state = new_state
+	emit_signal("state_changed", self.parent.parent.parent, current_state)
+
+
 func _process(delta):
 	pass

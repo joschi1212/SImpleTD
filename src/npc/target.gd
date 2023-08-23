@@ -1,4 +1,4 @@
-extends Marker3D
+class_name Target extends Marker3D
 
 @onready var camera : Camera3D = self.get_parent().get_node("Camera3D")
 @onready var area : Area3D = $Area3D
@@ -10,7 +10,7 @@ func _on_area_entered(body):
 	if body is CharacterBody3D:
 		print(body)
 		var state = body.get_node("Character/CharacterState")
-		# state.current_state = state.IDLEING
+		state.current_state = state.IDLEING
 	
 
 func _input(event):

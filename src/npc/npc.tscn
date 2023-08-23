@@ -1,11 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://cienp0l5324e2"]
+[gd_scene load_steps=7 format=3 uid="uid://cienp0l5324e2"]
 
 [ext_resource type="PackedScene" uid="uid://dqi0m04fke57a" path="res://src/characters/knight/knight.tscn" id="1_5r8nj"]
 [ext_resource type="Script" path="res://src/npc/npc.gd" id="1_xpkk4"]
 [ext_resource type="Script" path="res://src/npc/CharacterState.gd" id="3_hpym0"]
+[ext_resource type="AnimationLibrary" uid="uid://bku38xwhhtjm2" path="res://resourcen/animations/sword_and_shield.glb" id="4_32gyr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ikwm"]
 height = 1.8
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mmku0"]
 
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_xpkk4")
@@ -19,5 +22,15 @@ shape = SubResource("CapsuleShape3D_1ikwm")
 
 [node name="CharacterState" type="Node3D" parent="Character"]
 script = ExtResource("3_hpym0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
+autoplay = "sword_and_shield/sword and shield idle"
+libraries = {
+"sword_and_shield": ExtResource("4_32gyr")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="Character"]
+tree_root = SubResource("AnimationNodeStateMachine_mmku0")
+anim_player = NodePath("../AnimationPlayer")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
