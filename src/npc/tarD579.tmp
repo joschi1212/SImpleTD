@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbldhnoonre61"]
+
+[ext_resource type="Script" path="res://src/npc/target.gd" id="1_a0d70"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gmmcp"]
+radius = 0.1
+height = 0.5
+
+[node name="target" type="Marker3D"]
+script = ExtResource("1_a0d70")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_gmmcp")

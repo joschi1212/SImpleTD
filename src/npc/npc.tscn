@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cienp0l5324e2"]
+
+[ext_resource type="PackedScene" uid="uid://dqi0m04fke57a" path="res://src/characters/knight/knight.tscn" id="1_5r8nj"]
+[ext_resource type="Script" path="res://src/npc/npc.gd" id="1_xpkk4"]
+[ext_resource type="Script" path="res://src/npc/CharacterState.gd" id="3_hpym0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ikwm"]
+height = 1.8
+
+[node name="npc" type="CharacterBody3D"]
+script = ExtResource("1_xpkk4")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_1ikwm")
+
+[node name="Character" parent="." instance=ExtResource("1_5r8nj")]
+
+[node name="CharacterState" type="Node3D" parent="Character"]
+script = ExtResource("3_hpym0")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
