@@ -20,9 +20,9 @@ func _input(event):
 	if event is InputEventMouseButton and event.pressed:
 		event = event as InputEventMouseButton
 		if event.button_index == MOUSE_BUTTON_RIGHT:
-			state.current_state = state.ATTACKING
+			state.set_current_state(state.ATTACKING)
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			state.current_state = state.MOVING
+			state.set_current_state(state.MOVING)
 
 
 func _physics_process(delta):

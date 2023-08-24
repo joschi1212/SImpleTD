@@ -9,8 +9,8 @@ func _ready():
 func _on_area_entered(body):
 	if body is CharacterBody3D:
 		print(body)
-		var state = body.get_node("Character/CharacterState")
-		state.current_state = state.IDLEING
+		var state : CharacterState = body.get_node("Character/CharacterState")
+		state.set_current_state(state.IDLEING)
 	
 
 func _input(event):

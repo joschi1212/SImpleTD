@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cienp0l5324e2"]
+[gd_scene load_steps=12 format=3 uid="uid://cienp0l5324e2"]
 
 [ext_resource type="PackedScene" uid="uid://dqi0m04fke57a" path="res://src/characters/knight/knight.tscn" id="1_5r8nj"]
 [ext_resource type="Script" path="res://src/npc/npc.gd" id="1_xpkk4"]
@@ -8,7 +8,33 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ikwm"]
 height = 1.8
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8vvoq"]
+animation = &"sword_and_shield/sword and shield idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h28oj"]
+animation = &"sword_and_shield/sword and shield walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0kubb"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0a6sa"]
+xfade_time = 0.1
+advance_mode = 2
+advance_condition = &"moving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0eqdf"]
+xfade_time = 0.2
+advance_mode = 2
+advance_condition = &"idleing"
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mmku0"]
+states/End/position = Vector2(901, 94)
+states/Start/position = Vector2(104, 94)
+states/idle/node = SubResource("AnimationNodeAnimation_8vvoq")
+states/idle/position = Vector2(335, 94)
+states/walk/node = SubResource("AnimationNodeAnimation_h28oj")
+states/walk/position = Vector2(671, 94)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_0kubb"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_0a6sa"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_0eqdf")]
 
 [node name="npc" type="CharacterBody3D"]
 script = ExtResource("1_xpkk4")
@@ -23,14 +49,16 @@ shape = SubResource("CapsuleShape3D_1ikwm")
 [node name="CharacterState" type="Node3D" parent="Character"]
 script = ExtResource("3_hpym0")
 
+[node name="AnimationTree" type="AnimationTree" parent="Character/CharacterState"]
+tree_root = SubResource("AnimationNodeStateMachine_mmku0")
+anim_player = NodePath("../../AnimationPlayer")
+active = true
+parameters/conditions/idleing = false
+parameters/conditions/moving = false
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
-autoplay = "sword_and_shield/sword and shield idle"
 libraries = {
 "sword_and_shield": ExtResource("4_32gyr")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="Character"]
-tree_root = SubResource("AnimationNodeStateMachine_mmku0")
-anim_player = NodePath("../AnimationPlayer")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
