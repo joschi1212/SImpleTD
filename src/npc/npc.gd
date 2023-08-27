@@ -27,9 +27,7 @@ func _input(event):
 
 func _physics_process(delta):
 	var direction = Vector3()
-	
 	nav.target_position = get_parent().get_node("target").global_position
-	
 	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
 	var angle = 0
@@ -44,9 +42,6 @@ func _physics_process(delta):
 		rotation.y = lerp_angle(rotation.y, angle, delta * speed_turn)
 	
 	if (state.get_current_state() == state.MOVING):
-		
-		if(sign(rad_to_deg(angle)) <= 10):
-			velocity = velocity.lerp(direction * speed, accel_turn * delta)
-			move_and_slide()
-		else:
-			velocity = Vector3.ZERO
+		velocity = velocity.lerp(direction * speed, accel * delta)
+		move_and_slide()
+

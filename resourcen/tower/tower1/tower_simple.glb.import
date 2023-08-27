@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b5ouo81gaedoi"
+uid="uid://y8os78qd7svu"
 path="res://.godot/imported/tower_simple.glb-54125b847e5620473a82393f1b0a4c04.scn"
 
 [deps]
@@ -30,7 +30,7 @@ animation/remove_immutable_tracks=true
 import_script/path=""
 _subresources={
 "meshes": {
-"tower_simple_Cylinder": {
+"tower_simple_tower": {
 "generate/lightmap_uv": 0,
 "generate/lods": 0,
 "generate/shadow_meshes": 0,
@@ -38,7 +38,7 @@ _subresources={
 "lods/normal_split_angle": 25.0,
 "save_to_file/enabled": true,
 "save_to_file/make_streamable": "",
-"save_to_file/path": "res://resourcen/tower/tower1/tower1.res"
+"save_to_file/path": "res://resourcen/tower/tower1/tower_simple.res"
 }
 }
 }

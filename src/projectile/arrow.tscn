@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31yx1itlmvoe"]
+
+[ext_resource type="PackedScene" uid="uid://u20jegc2dqyv" path="res://resourcen/projectile/arrow.glb" id="1_b6iot"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lmids"]
+radius = 0.2
+
+[node name="arrow" instance=ExtResource("1_b6iot")]
+
+[node name="Area3D" type="Area3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02575, 0)
+shape = SubResource("SphereShape3D_lmids")

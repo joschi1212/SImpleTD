@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bthiio4axxl2c"
-path.s3tc="res://.godot/imported/tower_simple_tower_texture.png-ad95f7aff388647926f8ec8e60648e96.s3tc.ctex"
+uid="uid://darqxi27alobg"
+path.s3tc="res://.godot/imported/DisplacementMap_high_bpp.png-55c9ae59085eaab087e7b0521a9d7a16.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://resourcen/tower/tower1/tower_simple_tower_texture.png"
-dest_files=["res://.godot/imported/tower_simple_tower_texture.png-ad95f7aff388647926f8ec8e60648e96.s3tc.ctex"]
+source_file="res://resourcen/tower/tower1/DisplacementMap_high_bpp.png"
+dest_files=["res://.godot/imported/DisplacementMap_high_bpp.png-55c9ae59085eaab087e7b0521a9d7a16.s3tc.ctex"]
 
 [params]
 

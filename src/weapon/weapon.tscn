@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://btciuixvyuvdy"]
+
+[ext_resource type="Script" path="res://src/weapon/weapon.gd" id="1_tkd2f"]
+[ext_resource type="PackedScene" uid="uid://c31yx1itlmvoe" path="res://src/projectile/arrow.tscn" id="2_atm3n"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_g3han"]
+
+[node name="weapon" type="Node3D"]
+script = ExtResource("1_tkd2f")
+projectile = ExtResource("2_atm3n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CylinderMesh_g3han")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67965, 0, 4.15064)
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true

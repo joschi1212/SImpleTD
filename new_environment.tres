@@ -1,5 +1,13 @@
-[gd_resource type="Environment" format=3 uid="uid://bjfeihutavm3"]
+[gd_resource type="Environment" load_steps=2 format=3 uid="uid://bjfeihutavm3"]
+
+[ext_resource type="Sky" uid="uid://xhvvs7xf1fft" path="res://sky_shader.tres" id="1_w8xsl"]
 
 [resource]
-fog_enabled = true
+background_mode = 2
+sky = ExtResource("1_w8xsl")
+ssao_enabled = true
+ssil_enabled = true
 fog_light_color = Color(0.85098, 0.909804, 1, 1)
+adjustment_enabled = true
+adjustment_contrast = 1.4
+adjustment_saturation = 1.23
